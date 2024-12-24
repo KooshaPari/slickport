@@ -133,11 +133,11 @@ export function GET({ request }: RequestEvent) {
 }
 
 function pushToDatabase(project: Project) {
-	for (const link of project.links) {
-		if (link.to && !link.to.startsWith('http')) {
-			link.to = `http://${link.to}`;
-		}
-	}
+for (const link of project.links) {
+    if (link.to && !link.to.startsWith('http')) {
+        link.to = `http://${link.to}`;
+    }
+}
 	console.log('Pushing to database: ', project);
 	db.insert(table)
 		.values({

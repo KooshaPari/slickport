@@ -133,11 +133,7 @@ export function GET({ request }: RequestEvent) {
 }
 
 function pushToDatabase(project: Project) {
-	for (const link of project.links) {
-		if (link.to && !link.to.startsWith('http')) {
-			link.to = `http://${link.to}`;
-		}
-	}
+    const url = project.AccessURL.startsWith('http') ? project.AccessURL : `http://${project.AccessURL}`;
 	console.log('Pushing to database: ', project);
 	db.insert(table)
 		.values({

@@ -37,6 +37,7 @@ async function pullAllDatabase() {
 	const projects: Array<Project> = (await db
 		.select()
 		.from(table)
+		.findMany()
 		.execute()) as unknown as Array<Project>;
 	return projects;
 }

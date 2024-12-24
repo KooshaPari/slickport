@@ -77,7 +77,7 @@ const newItems = (await fetch('/byteport/client').then((res) =>
 // incorrect period:
 // {"from": "2024-12-23T07:37:02.005Z","to": "2024-12-23T07:37:02.005Z"}
 newItems.forEach((item) => {
-	console.log('Item:', item);
+	console.log()
 	if (typeof item.logo === 'string') {
 		item.logo = JSON.parse(item.logo);
 	}
