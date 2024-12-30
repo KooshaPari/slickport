@@ -108,7 +108,7 @@ export function GET({ request }: RequestEvent) {
 	return addCorsHeaders(
 		json({
 			...sampleProject,
-			template: {
+			/*template: {
 				name: '',
 				slug: '',
 				logo: { light: '', dark: '' },
@@ -124,7 +124,7 @@ export function GET({ request }: RequestEvent) {
 				location: '',
 				contract: '',
 				organization: '',
-				category: { slug: '', name: '' }
+				category: { slug: '', name: '' }*/
 			} as unknown as Project
 		} as unknown as Project),
 		origin

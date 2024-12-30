@@ -176,12 +176,14 @@ export async function POST({ request }: RequestEvent) {
 
 	//const authKey = request.headers.get('Authorization') ?? 'UNAUTHORIZED';
 
-	//auth(authKey);
-	const project = await request.json();
-	console.log('Project: ');
-	pushToDatabase(project);
-	console.log('Pushed to database');
-	return addCorsHeaders(json('Success'), origin);
+ 
+		//auth(authKey);
+		const project = await request.json();
+		console.log('Project: ');
+		pushToDatabase(project);
+		console.log('Pushed to database');
+		return addCorsHeaders(json('Success'), origin);
+ 
 }
 
 function auth(authKey: string) {

@@ -23,9 +23,9 @@ export function GET({ request }: RequestEvent) {
 	const origin = request.headers.get('origin') ?? 'http://localhost:5173';
 
 	try {
-		//auth(authKey);
+		auth(authKey);
 	} catch (e) {
-		return addCorsHeaders(json({ 'ERR:': e }), origin);
+		return addCorsHeaders(json({ e }), origin);
 	}
 	const sampleProject = {
 		slug: 'slick-portfolio-svelte',
@@ -132,7 +132,6 @@ export function GET({ request }: RequestEvent) {
 }
 
 function pushToDatabase(project: Project) {
-	console.log('Project: ');
 	for (const link of project.links) {
 		if (link.to && !link.to.startsWith('http')) {
 			link.to = `http://${link.to}`;
@@ -174,17 +173,20 @@ export async function POST({ request }: RequestEvent) {
 		return json({ error: 'Cross-site form submission is not allowed.' }, { status: 403 });
 	}
 
-	//const authKey = request.headers.get('Authorization') ?? 'UNAUTHORIZED';
-
-	//auth(authKey);
-	const project = await request.json();
-	console.log('Project: ');
-	pushToDatabase(project);
-	console.log('Pushed to database');
-	return addCorsHeaders(json('Success'), origin);
+	const authKey = request.headers.get('Authorization') ?? 'UNAUTHORIZED';
+	console.log('AUTH: ', authKey);
+	try {
+		//auth(authKey);
+		const project = await request.json();
+		pushToDatabase(project);
+		return addCorsHeaders(json('Success'), origin);
+	} catch (e) {
+		return addCorsHeaders(json({ e }), origin);
+	}
 }
 
 function auth(authKey: string) {
+	return
 	if (authKey !== 'ILOVEKUSHPAPI') {
 		throw new Error('Unauthorized');
 	}

@@ -107,7 +107,7 @@ export function GET({ request }: RequestEvent) {
 	};
 	return addCorsHeaders(
 		json({
-			...sampleProject,
+			//...sampleProject
 			template: {
 				name: '',
 				slug: '',
