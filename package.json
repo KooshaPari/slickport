@@ -12,9 +12,16 @@
 		"lint": "prettier --check . && eslint .",
 		"studio": "drizzle-kit studio --config drizzle.config.ts",
 		"generate": "drizzle-kit generate:pg --config drizzle.config.ts",
-		"migrate": "drizzle-kit push:pg --config drizzle.config.ts"
+		"migrate": "drizzle-kit push:pg --config drizzle.config.ts",
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs"
 	},
 	"devDependencies": {
+		"vitepress": "^1.6.3",
+		"vue": "^3.5.13",
+		"vitepress-plugin-mermaid": "^2.0.17",
+		"mermaid": "^11.4.1",
 		"@iconify-json/carbon": "^1.2.4",
 		"@riadh-adrani/utils": "^1.0.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
